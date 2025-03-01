@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>keseftsomeach</title>
+  <link rel="stylesheet" href="loanstyle.css">
+   <link rel="stylesheet" href="koteretstyle.css"/> 
+   <style>
+	      #calculate-btn{max-width:800px;}
+	      body{display:flex;flex-direction: column;align-items:center;}
+
+    </style>
+
+  <script>
+    function formatNumber(input) {
+  // הסרת כל תווים שאינם ספרות
+  const numericValue = input.value.replace(/[^\d]/g, '');
+
+  // המרת המספר לעיצוב עם פסיקים
+  const formattedValue = numericValue ? parseInt(numericValue, 10).toLocaleString() : '';
+
+  // עדכון השדה עם הערך המעוצב
+  input.value = formattedValue;
+}
+
+		
+    function hideIframe(){
+       window.parent.hideframe(); }
+</script>
+</head>
+<body dir="rtl">
+  <div class='closewindow' onclick='hideIframe()'>X</div>
+<main>
+  <div class="container">
+    <h1 style="color:green;font-size:18px;">סימולטור הלוואות - שפיצר</h1>
+ <form id="loan-form">
+   <label class="lblkotloan lbls" for="loan-amount" style="font-size: 18px;">סכום הלוואה:</label>
+      <input type="text" id="loan-amount" placeholder="לדוגמה: 100000" 
+  required inputmode="numeric" oninput="formatNumber(this)" />
+
+      <label class="lblkotloan lbls" for="loan-term" style="font-size: 18px;" >תקופת החזרים (חודשים):</label>
+      <input  type="number" id="loan-term" placeholder="לדוגמה: 60" required>
+      
+      <label class="lblkotloan lbls" for="interest-rate" style="font-size: 18px;">ריבית שנתית (%):</label>
+      <input  type="number" id="interest-rate" step="0.1" placeholder="לדוגמה: 5.5" required>
+	  
+	  <label class="lblkotloan lbls" for="interest-rate" style="font-size: 18px;">תקופת גרייס (אופציונלי)</label>
+<div class="input">
+		<input type="checkbox" class="chb" id="chb" style="max-width:50px;height:30px; " onchange="addgrace(this)">
+		<select style="width:100pxpx;height:30px;margin-right:20px;" id="grace" class="grace">בחר תקופה בחודשים</select>
+</div>
+      
+      <div class="buttons" id="buttons">
+		<button class="btnHashev" type="button" id="calculate-btn" style="font-size: 18px;">חשב</button>
+		<button type="button" class="clear-btn" id="clear-btn" style="font-size: 18px;" onclick="clr()">נקה הכל</button>
+      </div>
+      
+</form>
+    <button class="loachsilukin" id="loachsilukin" onclick="silukin()">הצג לוח סילוקין</button>
+  <div class="tables">
+<table id="toz" class="toz">
+      <tr>
+        <th>תשלום חודשי</th>
+        <td id="tashlomhodshi"></td>
+      </tr>
+      <tr>
+        <th>סך החזרים</th>
+        <td id="hechzerim"></td>
+      </tr>
+      <tr>
+        <th>סך ריבית</th>
+        <td id="ribit"></td>
+      </tr>
+    </table>
+   
+    <table id="amortization-schedule" class="amortization-schedule">
+      <thead>
+        <tr>
+          <th>חודש</th>
+          <th>תשלום </th>
+          <th>קרן</th>
+          <th>ריבית</th>
+          <th>יתרה</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- נתונים יתווספו דינאמית -->
+      </tbody>
+    </table>
+  
+  </div>
+  <div class-"disclaimer" id="disclaimer">
+	<ul>
+		<li>לוח הסילוקין נכון למועד החישוב.</li>
+		<li>בהלוואה צמודת מדד ישתנה התשלום לפי שיעור עליית המדד ביחס למדד הבסיס.</li>
+		<li>בהלוואה בריבית משתנה ישתנה התשלום לפי שיעור שינוי הריבית ביחס לריבית הבסיס.</li>
+	</ul>
+  </div> 
+  </div>
+  
+</main>
+  <script src="loanscript.js"></script>
+</body>
+</html>
