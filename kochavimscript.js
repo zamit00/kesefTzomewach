@@ -5,7 +5,7 @@ const mozkoch = [
   "קופת גמל להשקעה - חסכון לילד", "פוליסות חסכון"
 ];
 
-datanetunimKlaliX=datanetunimKlaliXM;
+
 const hishtalmot=[
   "כללי",
   "עוקב מדד s&p 500",
