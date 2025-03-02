@@ -2,14 +2,17 @@ async function filterMaslul(mas, moza,hevra){
    var data;var dataforfilter;
    if(moza==="פוליסות חסכון"){dataforfilter=datanetunimKlaliXB}
    else if(moza==="קרנות חדשות"){dataforfilter=datanetunimKlaliXP}
-   else{dataforfilter=datanetunimKlaliX}
+   else{dataforfilter=datanetunimKlaliXM}
         if (mas==='כללי'){
             data = dataforfilter.filter(item => 
                 item.mozar === moza && 
                 item.tesuam !== undefined &&
                 item.tesuam !==0 &&
                 item.shemkupa.includes(mas) &&
-                (hevra !== 0 ? item.menahelet.includes(hevra) : true)
+                (hevra !== 0 ? item.menahelet.includes(hevra) : true) &&
+               (dataforfilter === datanetunimKlaliXM ? item.ochlosiyayaad.includes('עובדי סקטור מסויים') : false) &&
+               (dataforfilter === datanetunimKlaliXM ? item.ochlosiyayaad.includes('עובדי מפעל/גוף מסויים') : false)
+                                              
             );
         data.sort((a, b) => b.tesuam - a.tesuam); 
         return data;
