@@ -24,7 +24,8 @@ window.onload = async function() {
         await Promise.all([
             fetchdataJason(),
             fetchdataJasonB(),
-            fetchdataJasonP()
+            fetchdataJasonP(),
+             fetchdataJasonM()
         ]);
         tkofa(); // רק אחרי שכל הנתונים נטענו בהצלחה
     } catch (error) {
@@ -97,6 +98,20 @@ async function fetchdataJason() {
         }
         const data = await response.json(); 
         datanetunimKlaliX = data; 
+        return data;  // חובה להחזיר נתונים כדי שהפונקציה תחכה באמת
+    } catch (error) {
+        console.error('שגיאה בשליפת הנתונים:', error);
+        throw error;  // נזרוק את השגיאה כדי ש-Promise.all יוכל לטפל בה
+    }
+}
+async function fetchdataJasonM() {
+    try {
+        const response = await fetch('dataJasonM.json'); 
+        if (!response.ok) {
+            throw new Error(`שגיאה: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json(); 
+        datanetunimKlaliXM = data; 
         return data;  // חובה להחזיר נתונים כדי שהפונקציה תחכה באמת
     } catch (error) {
         console.error('שגיאה בשליפת הנתונים:', error);
