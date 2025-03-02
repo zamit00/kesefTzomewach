@@ -1,4 +1,4 @@
-let newWindow = null;let datanetunimKlaliX;let datanetunimKlaliXB;
+let datanetunimKlaliX;let datanetunimKlaliXB;let datanetunimKlaliXM;
 const mozkoch = [
   'קרנות השתלמות', 'תגמולים ואישית לפיצויים', 'קופת גמל להשקעה',
   "קופת גמל להשקעה - חסכון לילד", "פוליסות חסכון"
